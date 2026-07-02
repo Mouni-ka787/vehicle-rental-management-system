@@ -52,7 +52,9 @@ public class MainMenu {
                         System.out.println(" Welcome Customer : " + user.getName());
                         System.out.println("================================");
 
-                        System.out.println("Customer Panel Coming in Milestone 5...");
+                        UserMenu userMenu = new UserMenu(sc, user);
+
+                        userMenu.start();
                     }
 
                 }

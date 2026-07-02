@@ -48,46 +48,82 @@ public class VehicleDAO {
 
     }
 
-    // ==========================
-    // VIEW ALL VEHICLES
-    // ==========================
+//    // ==========================
+//    // VIEW ALL VEHICLES
+//    // ==========================
+//
+//    public void viewVehicles() {
+//
+//        String sql = "SELECT * FROM vehicles";
+//
+//        try {
+//
+//            Connection con = DBConnection.getConnection();
+//
+//            PreparedStatement ps = con.prepareStatement(sql);
+//
+//            ResultSet rs = ps.executeQuery();
+//
+//            System.out.println("\n================ VEHICLES ================");
+//
+//            while (rs.next()) {
+//
+//                System.out.println("----------------------------------------");
+//
+//                System.out.println("Vehicle ID     : " + rs.getInt("vehicle_id"));
+//                System.out.println("Vehicle Name   : " + rs.getString("vehicle_name"));
+//                System.out.println("Brand          : " + rs.getString("brand"));
+//                System.out.println("Type           : " + rs.getString("vehicle_type"));
+//                System.out.println("Rent Per Day   : " + rs.getDouble("rent_per_day"));
+//                System.out.println("Available      : " + rs.getBoolean("available"));
+//
+//            }
+//
+//            System.out.println("----------------------------------------");
+//
+//        } catch (SQLException e) {
+//
+//            e.printStackTrace();
+//
+//        }
+//
+//    // ==========================
+ // VIEW AVAILABLE VEHICLES
+ // ==========================
 
-    public void viewVehicles() {
+ public void viewAvailableVehicles() {
 
-        String sql = "SELECT * FROM vehicles";
+     String sql = "SELECT * FROM vehicles WHERE available = true";
 
-        try {
+     try {
 
-            Connection con = DBConnection.getConnection();
+         Connection con = DBConnection.getConnection();
 
-            PreparedStatement ps = con.prepareStatement(sql);
+         PreparedStatement ps = con.prepareStatement(sql);
 
-            ResultSet rs = ps.executeQuery();
+         ResultSet rs = ps.executeQuery();
 
-            System.out.println("\n================ VEHICLES ================");
+         System.out.println("\n============= AVAILABLE VEHICLES =============");
 
-            while (rs.next()) {
+         while (rs.next()) {
 
-                System.out.println("----------------------------------------");
+             System.out.println("---------------------------------------------");
 
-                System.out.println("Vehicle ID     : " + rs.getInt("vehicle_id"));
-                System.out.println("Vehicle Name   : " + rs.getString("vehicle_name"));
-                System.out.println("Brand          : " + rs.getString("brand"));
-                System.out.println("Type           : " + rs.getString("vehicle_type"));
-                System.out.println("Rent Per Day   : " + rs.getDouble("rent_per_day"));
-                System.out.println("Available      : " + rs.getBoolean("available"));
+             System.out.println("Vehicle ID    : " + rs.getInt("vehicle_id"));
+             System.out.println("Vehicle Name  : " + rs.getString("vehicle_name"));
+             System.out.println("Brand         : " + rs.getString("brand"));
+             System.out.println("Type          : " + rs.getString("vehicle_type"));
+             System.out.println("Rent Per Day  : " + rs.getDouble("rent_per_day"));
 
-            }
+         }
 
-            System.out.println("----------------------------------------");
+         System.out.println("---------------------------------------------");
 
-        } catch (SQLException e) {
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
 
-            e.printStackTrace();
-
-        }
-
-    }
+ }
 
     // ==========================
     // SEARCH VEHICLE
